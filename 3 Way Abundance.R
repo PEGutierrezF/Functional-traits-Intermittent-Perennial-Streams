@@ -9,9 +9,9 @@ library("plyr")
 library("ggplot2")
 
 citation("FD")
-setwd ("D:/Curriculum/02_ Articulos/00 In progress/117 Darixa Hernandez/Functional Diversity/ThreeWay/Abundance")
+# setwd ("D:/Curriculum/02_ Articulos/00 In progress/117 Darixa Hernandez/Functional Diversity/ThreeWay/Abundance")
 
-#Spp Matrix
+##### Spp Matrix #####
 sp.matrix<-read.csv("sp_abundance.csv", row.names=1)
 head(sp.matrix)
 str(sp.matrix)
@@ -143,6 +143,7 @@ treatment.matrix$FDis<-FD.output$FDis
 treatment.matrix
 
 ## Permanova
+
 adonis(treatment.matrix$FDis ~ treatment.matrix$Treatment*treatment.matrix$Season*treatment.matrix$Habitat, permutations=999, method = "euclidean") ## generación de permanova con euclideana y un alfa de 0.001
 
 summarize <- ddply(treatment.matrix, .(Treatment, Season,Habitat), summarize, mean = mean(FDis), sd= sd(FDis), se = sd(FDis)/length(FDis)) 
@@ -173,7 +174,7 @@ g2$layout$clip[g2$layout$name == "panel"] <- "off"
 grid.draw(g2)
 
 
-############### Boxplot
+############### Boxplot ##################
 
 FR<-read.csv("FRichness.csv")
 head(FR)
@@ -184,7 +185,7 @@ p
 p2 <- p + facet_wrap(.~Frichness, scales= "free")+
   theme(strip.text.x = element_text(size=9, color="black", face="bold"))
 p2 
-p3 <- p2 + labs(x="Stream:Habitat", y = "Functional diversity")
+p3 <- p2 + labs(x="Stream-Habitat", y = "Functional diversity")
 p3
 p4 <- p3 + theme(axis.title.x = element_text(color = "black", size = 12, face = "bold"),
           axis.title.y = element_text(color = "black", size = 12, face = "bold"))
