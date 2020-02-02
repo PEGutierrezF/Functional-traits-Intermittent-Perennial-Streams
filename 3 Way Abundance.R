@@ -36,7 +36,6 @@ tr.matrix.factor
 
 ########################################
 ########## Funtional Richness ##########
-########################################
 
 FD.output<-dbFD(tr.dist, sp.matrix)
 FD.output$FRic
@@ -94,7 +93,6 @@ ggplot(summarize, aes(x=factor(Treatment), y=mean) ) +
 
 ########################################
 ########## Funtional evenness ##########
-########################################
 
 FD.output1<-dbFD(tr.dist, sp.matrix)
 FD.output1$FEve
@@ -134,7 +132,6 @@ grid.draw(g2)
 
 ###########################################
 ########## Functional Diversity  ##########
-###########################################
 
 FD.output<-dbFD(tr.dist, sp.matrix)
 FD.output$FDis
@@ -142,7 +139,7 @@ FD.output$FDis
 treatment.matrix$FDis<-FD.output$FDis
 treatment.matrix
 
-## Permanova
+###### Permanova ######
 
 adonis(treatment.matrix$FDis ~ treatment.matrix$Treatment*treatment.matrix$Season*treatment.matrix$Habitat, permutations=999, method = "euclidean") ## generación de permanova con euclideana y un alfa de 0.001
 
