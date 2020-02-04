@@ -189,6 +189,9 @@ p4 <- p3 + theme(axis.title.x = element_text(color = "black", size = 12, face = 
 p4
 p5 <- p4 +   theme(axis.text.x=element_text(angle=90, vjust=0.4,hjust=1))
 p5
+p6 <- p5 +   stat_summary(fun.y=mean, geom="point", aes(group=Season), position=position_dodge(.9), 
+                          color="white", size=3)
+p6
 
-p5 + ggsave("Figure 1.TIFF",width=6, height=4,dpi=600)
+p6 + ggsave("Figure 1.TIFF",width=6, height=4,dpi=600)
 
