@@ -7,6 +7,8 @@ require("FD")
 require ("vegan")
 library("plyr")
 library("ggplot2")
+library(grid)
+
 
 citation("FD")
 # setwd ("D:/Curriculum/02_ Articulos/00 In progress/117 Darixa Hernandez/Functional Diversity/ThreeWay/Abundance")
@@ -179,11 +181,11 @@ head(FR)
 p <- ggplot(data =FR, aes(interaction(Habitat, Treatment), y=Mean)) + 
             geom_boxplot(aes(fill=Season))
 p2 <- p + facet_wrap(.~Frichness, scales= "free")+ # or as Label
-          theme(strip.text.x = element_text(size=9, color="black", face="bold"))+
+         # theme(strip.text.x = element_text(size=9, color="black", face="bold"))+
   theme(strip.text.x = element_text(face="bold", size=12)) +
   theme(strip.text.y = element_blank(), # remove background
         strip.background.x = element_blank()) +  # remove background
-# theme(strip.text.x = element_text(face="bold", size=12, colour="white")) # Each title white
+theme(strip.text.x = element_text(face="bold", size=12, colour="white")) # Each title white
 p2
 p3 <- p2 + labs(x="Stream-Habitat", y = "Functional diversity")
 p3
@@ -204,5 +206,17 @@ p8 <- p7 + scale_fill_grey(start = 0, end = .9)
 p8
 
 
-p8 + ggsave("Figure 1.TIFF",width=6, height=4,dpi=600)
+dat_text <- data.frame(
+  label = c("A", "B", "C"),
+  Frichness   = c("FDis", "FEve", "FRic"),
+  x     = c(4, 4.4, 4),
+  y     = c(0.45, 0.8, 0.00053)
+)
+
+p9 <- p8 + geom_text(
+  data    = dat_text,
+  mapping = aes(x = x, y = y, label = label))
+p9
+
+p9 + ggsave("Figure 1.TIFF",width=6, height=4,dpi=600)
 
