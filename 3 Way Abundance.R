@@ -200,7 +200,9 @@ p6
 p7 <- p6 +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                 panel.background = element_blank(), axis.line = element_line(colour = "black"))
 p8 <- p7 + scale_fill_grey(start = 0, end = .9)
+# scale_fill_manual(values = c("grey80", "grey30"))
 p8
+
 
 p8 + ggsave("Figure 1.TIFF",width=6, height=4,dpi=600)
 
