@@ -28,11 +28,14 @@ treatment.matrix<-read.csv("treatment.csv", row.names=1)
 head(treatment.matrix) 
 str(treatment.matrix)
 
+
 tr.matrix.factor<-as.data.frame(apply(tr.matrix[,], 2, as.factor))
-rownames(tr.matrix.factor)<-rownames(tr.matrix)
+tr.matrix.factor
+rownames(tr.matrix.factor) <- rownames(tr.matrix)
+
 tr.dist<-gowdis(tr.matrix.factor)
 head(tr.dist)
-tr.matrix.factor
+
 
 
 
