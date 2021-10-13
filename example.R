@@ -16,4 +16,3 @@ treatment.matrix$FDiv<-FD.output$FDiv
 treatment.matrix$RaoQ<-FD.output$RaoQ
 treatment.matrix
 
-
