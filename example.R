@@ -9,10 +9,17 @@ FD.output$FDiv
 FD.output$RaoQ
 
 
-treatment.matrix$FRic<-FD.output$FRic
-treatment.matrix$FEve<-FD.output$FEve
-treatment.matrix$FDis<-FD.output$FDis
-treatment.matrix$FDiv<-FD.output$FDiv
-treatment.matrix$RaoQ<-FD.output$RaoQ
+
+treatment.matrix$FRic<- FD.output$FRic
+treatment.matrix$FEve<- FD.output$FEve
+treatment.matrix$FDis<- FD.output$FDis
+treatment.matrix$FDiv<- FD.output$FDiv
+treatment.matrix$RaoQ<- FD.output$RaoQ
 treatment.matrix
 
+
+dummy$abun
+dummy$trait
+
+ex1 <- dbFD(dummy$trait, dummy$abun)
+ex1$CWM
